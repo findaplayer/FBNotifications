@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
     self = [super init];
     if (!self) return self;
 
-    NSNumber *height = dictionary[@"height"] ?: @(FBNCardHeroHeightUnspecified);
+    NSNumber *height = (![dictionary[@"height"] isKindOfClass:[NSNull class]]) ? dictionary[@"height"]: @(FBNCardHeroHeightUnspecified);
     _height = FBNCGFloatFromNumber(height);
     _background = background;
 
